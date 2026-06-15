@@ -34,7 +34,7 @@ export async function GET() {
       },
     });
 
-    const formattedStudents = students.map((student) => ({
+    const formattedStudents = students.map((student: typeof students[number]) => ({
       id: student.id,
       studentId: student.studentId,
       name: student.user.name,

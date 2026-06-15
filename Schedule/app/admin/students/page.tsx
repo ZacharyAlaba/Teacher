@@ -122,6 +122,12 @@ export default function StudentsPage() {
           gradeLevel: "",
           sectionId: "",
           password: "",
+          dateOfBirth: "",
+          gender: "",
+          phone: "",
+          address: "",
+          guardianName: "",
+          guardianPhone: "",
         });
         setEditingId(null);
         setShowForm(false);
@@ -161,6 +167,12 @@ export default function StudentsPage() {
       gradeLevel: student.gradeLevel,
       sectionId: student.sectionId,
       password: "",
+      dateOfBirth: "",
+      gender: "",
+      phone: "",
+      address: "",
+      guardianName: "",
+      guardianPhone: "",
     });
     setEditingId(student.id);
     setShowForm(true);

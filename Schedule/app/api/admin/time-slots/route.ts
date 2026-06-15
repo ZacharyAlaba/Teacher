@@ -38,7 +38,13 @@ export async function GET(request: NextRequest) {
       orderBy: [{ day: "asc" }, { startTime: "asc" }],
     });
 
-    let csvTimeSlots = [];
+    let csvTimeSlots: Array<{
+      id: string;
+      day: string;
+      startTime: string;
+      endTime: string;
+      createdAt?: Date | null;
+    }> = [];
     try {
       csvTimeSlots = await loadTimeSlotsFromCsv();
     } catch (csvErr) {

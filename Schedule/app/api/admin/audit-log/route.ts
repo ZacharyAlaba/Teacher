@@ -30,7 +30,7 @@ export async function GET() {
     });
 
     // Format as audit log
-    const auditLog = schedules.map((schedule) => ({
+    const auditLog = schedules.map((schedule: typeof schedules[number]) => ({
       id: schedule.id,
       action: "ASSIGNED",
       timestamp: schedule.createdAt,

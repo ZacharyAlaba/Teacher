@@ -34,11 +34,10 @@ export async function GET(request: NextRequest) {
       teacherWorkload[teacherId]++;
 
       // Find other schedules at same time for same teacher
-      const duplicates = schedules.filter(
-        (s) =>
-          s.teacherId === teacherId &&
-          s.timeSlotId === timeSlotId &&
-          s.id !== schedule.id
+      const duplicates = schedules.filter((s: typeof schedules[number]) =>
+        s.teacherId === teacherId &&
+        s.timeSlotId === timeSlotId &&
+        s.id !== schedule.id
       );
 
       if (duplicates.length > 0) {
@@ -61,11 +60,10 @@ export async function GET(request: NextRequest) {
       const sectionId = schedule.sectionId;
       const timeSlotId = schedule.timeSlotId;
 
-      const duplicates = schedules.filter(
-        (s) =>
-          s.sectionId === sectionId &&
-          s.timeSlotId === timeSlotId &&
-          s.id !== schedule.id
+      const duplicates = schedules.filter((s: typeof schedules[number]) =>
+        s.sectionId === sectionId &&
+        s.timeSlotId === timeSlotId &&
+        s.id !== schedule.id
       );
 
       if (duplicates.length > 0) {
@@ -87,7 +85,7 @@ export async function GET(request: NextRequest) {
     const overloadedTeachers = Object.entries(teacherWorkload)
       .filter(([_, count]) => (count as number) > 24)
       .map(([teacherId, count]) => {
-        const teacher = schedules.find((s) => s.teacherId === teacherId)?.teacher;
+        const teacher = schedules.find((s: typeof schedules[number]) => s.teacherId === teacherId)?.teacher;
         return {
           type: "OVERLOAD_WARNING",
           description: `${teacher?.user.name} has ${count} class periods (recommended: max 24)`,

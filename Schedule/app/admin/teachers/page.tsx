@@ -152,7 +152,15 @@ export default function TeachersPage() {
   }
 
   function handleEdit(teacher: Teacher) {
-    setFormData({ name: teacher.user.name, email: teacher.user.email });
+    setFormData({
+      name: teacher.user.name,
+      email: teacher.user.email,
+      password: "",
+      dateOfBirth: "",
+      gender: "",
+      phone: "",
+      address: "",
+    });
     setEditingId(teacher.id);
     setShowForm(true);
   }

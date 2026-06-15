@@ -62,10 +62,10 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Return teacher with password (only shown to admin on creation)
+    // Return created teacher (without password)
     return NextResponse.json({
       ...teacher,
-      password: tempPassword,
+      // password is not returned for security reasons
     }, { status: 201 });
   } catch (error: any) {
     console.error("Teacher creation error:", error);
